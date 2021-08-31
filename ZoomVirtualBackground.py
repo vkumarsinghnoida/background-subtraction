@@ -44,7 +44,7 @@ with mp_selfie_segmentation.SelfieSegmentation(
     #      be the background, e.g., bg_image = cv2.imread('/path/to/image/file')
     #   b) Blur the input image by applying image filtering, e.g.,
     #      bg_image = cv2.GaussianBlur(image,(55,55),0)
-    bg_image = cv2.imread('backgrounds/1.png')
+    bg_image = cv2.imread('1.png')
     #bg_image = cv2.GaussianBlur(image, (55, 55), 0)
     if bg_image is None:
       bg_image = np.zeros(image.shape, dtype=np.uint8)
