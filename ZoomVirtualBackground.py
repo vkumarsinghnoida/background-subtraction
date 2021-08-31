@@ -12,6 +12,10 @@ mp_selfie_segmentation = mp.solutions.selfie_segmentation
 # For webcam input:
 BG_COLOR = (0, 255, 196) # green screen
 cap = cv2.VideoCapture('demo.mp4')
+w = int(cap.get(3))
+h = int (cap.get(4))
+size = (w, h)
+result = cv2.VideoWriter('output.avi', cv2.VideoWriter_fourcc(*'MJPG'), 20, size)
 prevTime = 0
 with mp_selfie_segmentation.SelfieSegmentation(
     model_selection=0) as selfie_segmentation:
@@ -55,8 +59,9 @@ with mp_selfie_segmentation.SelfieSegmentation(
     fps = 1 / (currTime - prevTime)
     prevTime = currTime
     cv2.putText(output_image, f'FPS: {int(fps)}', (20, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 196, 255), 2)
-    cv2.imshow('DIY Zoom Virtual Background', output_image)
+    result.write(output_image)
     if cv2.waitKey(5) & 0xFF == 27:
       break
 cap.release()
+result.release()
 #Watch Tutorial at www.augmentedstartups.info/YouTube
