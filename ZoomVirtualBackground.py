@@ -11,7 +11,7 @@ mp_selfie_segmentation = mp.solutions.selfie_segmentation
 
 # For webcam input:
 BG_COLOR = (0, 255, 196) # green screen
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture('demo.mp4')
 prevTime = 0
 with mp_selfie_segmentation.SelfieSegmentation(
     model_selection=0) as selfie_segmentation:
